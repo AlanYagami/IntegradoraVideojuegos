@@ -53,18 +53,6 @@ public class MeteoriteM1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-<<<<<<< HEAD
-            Debug.Log($"[M1] Colisión con el jugador");
-
-            // Futuro sistema de daño:
-            // other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
-
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log($"[M1] Colisión con otro objeto: {other.gameObject.name}");
-=======
             Debug.Log($"[MeteoriteM1] Colisión con el jugador. Daño: {damage}");
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             if (playerHealth != null)
@@ -72,7 +60,6 @@ public class MeteoriteM1 : MonoBehaviour
                 playerHealth.TakeHit();
             }
             Destroy(gameObject);
->>>>>>> 8e8aebc989d22cb83b3a17a04186725cef223389
         }
     }
 
