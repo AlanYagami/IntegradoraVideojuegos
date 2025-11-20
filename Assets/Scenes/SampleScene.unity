@@ -508,7 +508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &531739208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,19 +1183,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ac4e66d61fb954b8254bfc23a933f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyOctopusP2
-  floatSpeed: 2
-  moveRange: 10
-  erraticAmplitude: 3
-  erraticFrequency: 3
+  moveSpeed: 2
+  floatAmplitude: 0.5
+  floatFrequency: 2
   teleportRadius: 15
-  teleportCooldown: 5
-  teleportDelay: 0.5
-  shockRadius: 5
-  shockDamage: 20
-  slowFactor: 0.5
+  teleportInterval: 3
+  electricFieldRadius: 4
+  slowMultiplier: 0.5
   slowDuration: 3
-  electricFieldFX: {fileID: 0}
-  teleportFX: {fileID: 0}
+  fieldDuration: 1.5
 --- !u!54 &1750960173
 Rigidbody:
   m_ObjectHideFlags: 0
