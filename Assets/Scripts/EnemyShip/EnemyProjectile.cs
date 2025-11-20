@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public int damage = 10;
-    public float lifeTime = 5f;
+    public float lifeTime = 3f;
 
     void Start()
     {
@@ -20,6 +20,7 @@ public class EnemyProjectile : MonoBehaviour
             {
                 playerHealth.TakeHit();
             }
+
             Destroy(gameObject);
         }
     }
