@@ -6,6 +6,7 @@ public class RotateModel : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        // Rotar alrededor del eje Y local del pivot (comportamiento estable)
+        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.Self);
     }
 }
