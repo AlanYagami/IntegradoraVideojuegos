@@ -15,7 +15,11 @@ public class EnemyProjectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log($"[EnemyProjectile] Impactó al jugador. Daño: {damage}");
-            // En el futuro: other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeHit();
+            }
             Destroy(gameObject);
         }
     }
