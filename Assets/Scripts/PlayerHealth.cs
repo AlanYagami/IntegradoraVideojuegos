@@ -13,6 +13,10 @@ public class PlayerHealth : MonoBehaviour
     public float invulnTime = 0.8f;
     private bool isInvulnerable = false;
 
+    // Propiedades públicas para acceder a los valores
+    public int HitsTaken => hitsTaken;
+    public int MaxHits => maxHits;
+
     void Start()
     {
         hitsTaken = 0;

@@ -38,6 +38,15 @@ public class EnemyOctopusP1 : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !attached)
+        {
+            Debug.Log("[EnemyOctopusP1] Colisión con el jugador por trigger");
+            AttachToPlayer();
+        }
+    }
+
     private void AttachToPlayer()
     {
         if (attached) return;
@@ -48,6 +57,19 @@ public class EnemyOctopusP1 : MonoBehaviour
     private IEnumerator AttachRoutine()
     {
         Debug.Log("Pulpo P1: Se pegó al jugador");
+        
+        // Causar daño al jugador
+        PlayerHealth playerHealth = playerTransform.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            Debug.Log("Pulpo P1: Causando daño");
+            playerHealth.TakeHit();
+        }
+        else
+        {
+            Debug.LogError("Pulpo P1: No se encontró PlayerHealth");
+        }
+        
         transform.SetParent(playerTransform);
         transform.localPosition = new Vector3(0, 0, -1f);
 
@@ -64,3 +86,4 @@ public class EnemyOctopusP1 : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
