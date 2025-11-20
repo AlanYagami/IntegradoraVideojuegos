@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MeteoriteM3 : MonoBehaviour
 {
@@ -6,7 +7,11 @@ public class MeteoriteM3 : MonoBehaviour
     public float maxSpeed = 15f;
     public float acceleration = 3f;
     public float rotationSpeed = 60f;
-    public Transform player;
+    public float attachDistance = 1.5f;
+
+    private Transform playerTransform;
+    private PlayerStateMachine player;
+    private bool attached = false;
     public int damage = 20;
 
     private Rigidbody rb;
@@ -20,48 +25,73 @@ public class MeteoriteM3 : MonoBehaviour
             rb.useGravity = false;
             rb.isKinematic = true;
         }
+
+        currentSpeed = initialSpeed;
     }
 
     void Start()
     {
-        currentSpeed = initialSpeed;
+        Debug.Log($"[M3] Meteorito creado.");
 
-        if (player == null)
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObject != null)
         {
-            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj != null)
-                player = playerObj.transform;
+            playerTransform = playerObject.transform;
+            player = playerObject.GetComponent<PlayerStateMachine>();
+            Debug.Log("[M3] Jugador detectado correctamente.");
         }
-
-        if (player == null)
+        else
         {
-            Debug.LogWarning("[MeteoriteM3] No se encontró un objeto con tag 'Player'.");
+            Debug.LogWarning("[M3] No se encontró un objeto con tag 'Player'.");
         }
     }
 
     void Update()
     {
-        if (player == null) return;
-
-        // Calcula dirección hacia el jugador
-        Vector3 direction = (player.position - transform.position).normalized;
+        if (playerTransform == null || attached) return;
 
         // Aumenta la velocidad progresivamente
         currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, acceleration * Time.deltaTime);
 
         // Movimiento hacia el jugador
-        transform.position += direction * currentSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, currentSpeed * Time.deltaTime);
+        transform.LookAt(playerTransform);
 
+        // Detectar si está lo suficientemente cerca para "pegarse"
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        if (distance <= attachDistance)
+        {
+            AttachToPlayer();
+        }
+
+        // Rotación
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.Self);
+    }
+
+    private void AttachToPlayer()
+    {
+        if (attached) return;
+        attached = true;
+        StartCoroutine(AttachRoutine());
+    }
+
+    private IEnumerator AttachRoutine()
+    {
+        Debug.Log("Meteorito M3: Destrucción del meteorito");
+        Destroy(gameObject);
+
+        yield return new WaitForSeconds(0.1f);
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (attached) return;
+
         if (other.CompareTag("Player"))
         {
-            Debug.Log($"[MeteoriteM3] Impactó al jugador. Daño simulado: {damage}");
-            // En el futuro:
-            // other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            Debug.Log($"[M3] Impactó al jugador.");
             Destroy(gameObject);
         }
     }

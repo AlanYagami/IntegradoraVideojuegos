@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public int damage = 10;
-    public float lifeTime = 5f;
+    public float lifeTime = 3f;
 
     void Start()
     {
@@ -14,7 +14,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log($"[EnemyProjectile] Impactó al jugador. Daño: {damage}");
+            Debug.Log($"[EnemyProjectile] Impactó al jugador");
             // En el futuro: other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
             Destroy(gameObject);
         }
