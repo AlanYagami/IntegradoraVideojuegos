@@ -222,7 +222,7 @@ MonoBehaviour:
   zigzagAmplitude: 3
   zigzagFrequency: 3
   approachDistance: 15
-  projectilePrefab: {fileID: 7822214458616278008, guid: 7bf9799362d3f7a46b6e6ea1fd1ac70b, type: 3}
+  projectilePrefab: {fileID: 3755386970260673114, guid: ec725b26ef6431a419c7172242878078, type: 3}
   firePoint: {fileID: 7600478536917504092}
   projectileSpeed: 25
   burstCount: 3

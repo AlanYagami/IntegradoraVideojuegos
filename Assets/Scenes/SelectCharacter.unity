@@ -193,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 17733e75e2e20f242a50ecf865adb3a6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ffe64c6e764170b9d425ad6967727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateModel
-  rotationSpeed: 35
+  speed: 50
 --- !u!4 &18540333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 17733e75e2e20f242a50ecf865adb3a6, type: 3}
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ffe64c6e764170b9d425ad6967727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateModel
-  rotationSpeed: 35
+  speed: 50
 --- !u!1 &476422137
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,8 +584,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Naves
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eebdf091bff86b14fa39191aa6f2ccdf, type: 2}
-  m_sharedMaterial: {fileID: -8014170078651391285, guid: eebdf091bff86b14fa39191aa6f2ccdf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -670,7 +670,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 626138308}
-  - component: {fileID: 626138309}
   m_Layer: 0
   m_Name: Pivot_nave2
   m_TagString: Untagged
@@ -694,19 +693,6 @@ Transform:
   - {fileID: 1492627633}
   m_Father: {fileID: 1126997535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &626138309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626138307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566ffe64c6e764170b9d425ad6967727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RotateModel
-  rotationSpeed: 25
 --- !u!1 &627352083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b89c5c5ab6ba3e64c971ec7d83ebfbb1, type: 3}
@@ -734,7 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ffe64c6e764170b9d425ad6967727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateModel
-  rotationSpeed: 35
+  speed: 50
 --- !u!1 &746281099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,15 +1254,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b89c5c5ab6ba3e64c971ec7d83ebfbb1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.06
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b89c5c5ab6ba3e64c971ec7d83ebfbb1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.06
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b89c5c5ab6ba3e64c971ec7d83ebfbb1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.06
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b89c5c5ab6ba3e64c971ec7d83ebfbb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1328,7 +1314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b89c5c5ab6ba3e64c971ec7d83ebfbb1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1350,12 +1336,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627352083}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 566ffe64c6e764170b9d425ad6967727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateModel
-  rotationSpeed: 20
+  speed: 35
 --- !u!1 &1564835306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,8 +1537,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Iniciar
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eebdf091bff86b14fa39191aa6f2ccdf, type: 2}
-  m_sharedMaterial: {fileID: -8014170078651391285, guid: eebdf091bff86b14fa39191aa6f2ccdf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1930,7 +1916,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a7d47df1b83d87640b3069dc09225acc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 80.59
+      value: 58.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7d47df1b83d87640b3069dc09225acc, type: 3}
       propertyPath: m_LocalScale.y
@@ -2010,15 +1996,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7009e5f85f3090a4790fa4c8ad211a99, type: 3}
       propertyPath: m_LocalScale.x
-      value: 609.8
+      value: 549.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7009e5f85f3090a4790fa4c8ad211a99, type: 3}
       propertyPath: m_LocalScale.y
-      value: 609.8
+      value: 549.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7009e5f85f3090a4790fa4c8ad211a99, type: 3}
       propertyPath: m_LocalScale.z
-      value: 609.8
+      value: 549.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7009e5f85f3090a4790fa4c8ad211a99, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2197,7 +2183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ffe64c6e764170b9d425ad6967727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateModel
-  rotationSpeed: 50
+  speed: 50
 --- !u!1 &2126079182
 GameObject:
   m_ObjectHideFlags: 0
