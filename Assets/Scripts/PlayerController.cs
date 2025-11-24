@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerSoundController soundController;
     public float speed = 5f;
     public GameObject bulletPrefab; 
     public Transform firePoint; 
@@ -17,9 +18,10 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
         transform.Translate(movement * (speed * Time.deltaTime));
 
-        // Disparo con tecla Espacio o clic izquierdo
+        // Disparo
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
+            soundController.playDisparo();
             Shoot();
         }
     }
