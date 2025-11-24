@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerStateMachine : MonoBehaviour, IStateMachine
 {
+    public PlayerSoundController soundController;
     public IState CurrentState { get; set; }
     public Transform cameraObject;
     public float speed = 5f;
@@ -94,6 +95,7 @@ public class PlayerDashState : IState
     public void Enter()
     {
         Debug.Log("Estado: Dash");
+        Player.soundController.playDash();
     }
 
     public void Tick(float deltaTime)
@@ -130,6 +132,7 @@ public class PlayerSlowedState : IState
     public void Enter()
     {
         Debug.Log("Estado: Ralentizado");
+        Player.soundController.playRealentizado();
     }
 
     public void Tick(float deltaTime)
