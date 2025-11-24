@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7440ba90adaa8408b993737b6b50398e
+guid: 0e85cda72a40541f197e7fdcb140d7a1
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Space Age
+  - SPACE
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
