@@ -724,11 +724,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: aaf860cd8993a6c4b984c97449417579, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.307
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: aaf860cd8993a6c4b984c97449417579, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.287
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: aaf860cd8993a6c4b984c97449417579, type: 3}
       propertyPath: m_LocalRotation.w
@@ -761,7 +761,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100008, guid: aaf860cd8993a6c4b984c97449417579, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1900735150}
+    - targetCorrespondingSourceObject: {fileID: 118312, guid: aaf860cd8993a6c4b984c97449417579, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1713174488}
   m_SourcePrefab: {fileID: 100100000, guid: aaf860cd8993a6c4b984c97449417579, type: 3}
 --- !u!1 &1078616942 stripped
 GameObject:
@@ -1306,6 +1312,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1713174482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 118312, guid: aaf860cd8993a6c4b984c97449417579, type: 3}
+  m_PrefabInstance: {fileID: 1026026845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1713174488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713174482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc423992dbbf6c469f5c767af90da51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TakeablePowerUp
 --- !u!1 &1750960170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,6 +1601,46 @@ Transform:
   - {fileID: 1750960171}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1900735146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100008, guid: aaf860cd8993a6c4b984c97449417579, type: 3}
+  m_PrefabInstance: {fileID: 1026026845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1900735150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900735146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51803f42c5ad6ed469cd71e4b4e0dec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomizablePowerUp
+  powerUpName: 
+  isTakeable: 1
+  isHealing: 1
+  healAmount: 1
+  pickUpSound: {fileID: 8300000, guid: a4a9327e98855524c846cc8e2f559e96, type: 3}
+  externHull: {fileID: 0}
+  externHullRotSpeed: 0
+  externHullIsReverse: 0
+  externHullMaterial: {fileID: 0}
+  internHull: {fileID: 0}
+  internHullRotSpeed: 0
+  internHullIsReverse: 0
+  internHullMaterial: {fileID: 0}
+  effect: {fileID: 0}
+  effectRotSpeed: 0
+  effectIsReverse: 0
+  item: {fileID: 0}
+  itemRotSpeed: 0
+  itemIsReverse: 0
+  itemMaterial: {fileID: 0}
+  lightColor: {r: 1, g: 1, b: 1, a: 1}
+  lightIntensity: 3
+  lightRange: 4
 --- !u!1 &2061497420
 GameObject:
   m_ObjectHideFlags: 0

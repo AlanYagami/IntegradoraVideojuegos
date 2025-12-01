@@ -5,7 +5,12 @@ public class CustomizablePowerUp : MonoBehaviour {
 	
 	#region Settings
 	public string powerUpName;
-	public bool isTakeable = false;
+	public bool isTakeable = true;
+
+	// Si este power up cura al jugador
+	public bool isHealing = false;
+	// Cuántos "hits" cura (por defecto 1)
+	public int healAmount = 1;
 	public AudioClip pickUpSound;
 
 	public GameObject externHull;
