@@ -15,6 +15,14 @@ public class TakeablePowerUp : MonoBehaviour {
 			if(customPowerUp.pickUpSound != null){
 				AudioSource.PlayClipAtPoint(customPowerUp.pickUpSound, transform.position);
 			}
+			
+			// Si es un power up de curación, sanar al jugador
+			PlayerHealth playerHealth = collider.GetComponent<PlayerHealth>();
+			if(playerHealth != null && customPowerUp.powerUpName.Contains("green"))
+			{
+				playerHealth.HealOne();
+			}
+			
 			Destroy(transform.parent.gameObject);
 		}
 	}
