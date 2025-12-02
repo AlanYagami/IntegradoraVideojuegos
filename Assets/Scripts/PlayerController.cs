@@ -25,13 +25,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Movimiento original simple (ejes Horizontal / Vertical)
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
         transform.Translate(movement * (speed * Time.deltaTime));
 
-        // Disparo
+        // Disparo (sin modificar)
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             soundController.playDisparo();
@@ -45,7 +46,8 @@ public class PlayerController : MonoBehaviour
         if (bulletPrefab && firePoint)
         {
             FireModeManager.FireMode currentMode = fireModeManager.GetCurrentFireMode();
-            
+            Debug.Log($"PlayerController: Shoot() modo actual = {currentMode}");
+
             switch (currentMode)
             {
                 case FireModeManager.FireMode.Normal:
@@ -56,6 +58,9 @@ public class PlayerController : MonoBehaviour
                     break;
                 case FireModeManager.FireMode.ChargedShot:
                     ShootCharged();
+                    break;
+                default:
+                    ShootNormal();
                     break;
             }
         }
@@ -68,6 +73,7 @@ public class PlayerController : MonoBehaviour
     void ShootNormal()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log("PlayerController: Disparo normal instanciado");
         SetBulletDamage(bullet, 1);
     }
 
@@ -77,6 +83,7 @@ public class PlayerController : MonoBehaviour
         if (firePointLeft != null)
         {
             GameObject bulletLeft = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
+            Debug.Log("PlayerController: Disparo doble - izquierda instanciado");
             SetBulletDamage(bulletLeft, 1);
         }
         else
@@ -89,6 +96,7 @@ public class PlayerController : MonoBehaviour
         if (firePointRight != null)
         {
             GameObject bulletRight = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
+            Debug.Log("PlayerController: Disparo doble - derecha instanciado");
             SetBulletDamage(bulletRight, 1);
         }
         else
@@ -101,6 +109,7 @@ public class PlayerController : MonoBehaviour
     void ShootCharged()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log("PlayerController: Disparo cargado instanciado");
         SetBulletDamage(bullet, 2);
     }
 
@@ -119,6 +128,7 @@ public class PlayerController : MonoBehaviour
     {
         if (fireModeManager != null)
         {
+            Debug.Log($"PlayerController: SetFireMode invoked -> {mode} for {duration}s");
             fireModeManager.SetFireMode(mode, duration);
         }
     }
