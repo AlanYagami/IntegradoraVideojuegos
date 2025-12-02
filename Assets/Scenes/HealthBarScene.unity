@@ -499,6 +499,23 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &412920676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+  m_PrefabInstance: {fileID: 1426142339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &412920682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412920676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc423992dbbf6c469f5c767af90da51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TakeablePowerUp
 --- !u!1 &531739207
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,10 +691,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51803f42c5ad6ed469cd71e4b4e0dec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomizablePowerUp
-  powerUpName: Shooter
+  powerUpName: DoubleShot
   isTakeable: 1
   isHealing: 0
   healAmount: 1
+  isFireModePowerUp: 1
+  fireMode: 1
+  fireModeDuration: 10
   pickUpSound: {fileID: 8300000, guid: a4a9327e98855524c846cc8e2f559e96, type: 3}
   externHull: {fileID: 0}
   externHullRotSpeed: 0
@@ -821,7 +841,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100004, guid: f10a79f37ff522b4280e2844332bef77, type: 3}
       insertIndex: -1
       addedObject: {fileID: 697250047}
+    - targetCorrespondingSourceObject: {fileID: 100002, guid: f10a79f37ff522b4280e2844332bef77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 939959261}
   m_SourcePrefab: {fileID: 100100000, guid: f10a79f37ff522b4280e2844332bef77, type: 3}
+--- !u!1 &939959260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: f10a79f37ff522b4280e2844332bef77, type: 3}
+  m_PrefabInstance: {fileID: 939959259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &939959261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939959260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc423992dbbf6c469f5c767af90da51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TakeablePowerUp
 --- !u!1 &1078616942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 868407551524928835, guid: c9859162b5ff6a345a971b781ab1cc35, type: 3}
@@ -1253,6 +1293,137 @@ MonoBehaviour:
   fireRate: 2
   projectileSpeed: 20
   damage: 10
+--- !u!1001 &1426142339
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_Name
+      value: PowerUpContainerElectricSpark
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5058956
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: reverse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13500000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1700
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: InitialModule.startRotationX.scalar
+      value: 3.1415927
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: InitialModule.startRotationY.scalar
+      value: 3.1415927
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1689885814}
+    - targetCorrespondingSourceObject: {fileID: 100002, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 412920682}
+  m_SourcePrefab: {fileID: 100100000, guid: 034e51e6d8986d04795f48b487231687, type: 3}
 --- !u!1 &1562366687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1536,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1689885812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 034e51e6d8986d04795f48b487231687, type: 3}
+  m_PrefabInstance: {fileID: 1426142339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1689885814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689885812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51803f42c5ad6ed469cd71e4b4e0dec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomizablePowerUp
+  powerUpName: ChargedShot
+  isTakeable: 1
+  isHealing: 0
+  healAmount: 1
+  isFireModePowerUp: 1
+  fireMode: 2
+  fireModeDuration: 8
+  pickUpSound: {fileID: 8300000, guid: a4a9327e98855524c846cc8e2f559e96, type: 3}
+  externHull: {fileID: 0}
+  externHullRotSpeed: 0
+  externHullIsReverse: 0
+  externHullMaterial: {fileID: 2100000, guid: 02758698f6605d345a67239c79c069b6, type: 2}
+  internHull: {fileID: 0}
+  internHullRotSpeed: 0
+  internHullIsReverse: 0
+  internHullMaterial: {fileID: 0}
+  effect: {fileID: 0}
+  effectRotSpeed: 0
+  effectIsReverse: 0
+  item: {fileID: 0}
+  itemRotSpeed: 0
+  itemIsReverse: 0
+  itemMaterial: {fileID: 0}
+  lightColor: {r: 1, g: 1, b: 1, a: 1}
+  lightIntensity: 3
+  lightRange: 4
 --- !u!1 &1750960170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,3 +2224,4 @@ SceneRoots:
   - {fileID: 1798032688}
   - {fileID: 805540362879022000}
   - {fileID: 939959259}
+  - {fileID: 1426142339}

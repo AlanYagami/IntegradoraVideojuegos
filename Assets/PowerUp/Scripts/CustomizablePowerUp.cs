@@ -11,6 +11,14 @@ public class CustomizablePowerUp : MonoBehaviour {
 	public bool isHealing = false;
 	// Cuántos "hits" cura (por defecto 1)
 	public int healAmount = 1;
+
+	// Si este power up modifica el modo de disparo
+	public bool isFireModePowerUp = false;
+	// Tipo de modo de disparo (0=Normal, 1=DoubleShot, 2=ChargedShot)
+	public int fireMode = 0;
+	// Duración en segundos del poder de disparo
+	public float fireModeDuration = 10f;
+
 	public AudioClip pickUpSound;
 
 	public GameObject externHull;
