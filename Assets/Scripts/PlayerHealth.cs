@@ -45,7 +45,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void HealOne()
     {
-        hitsTaken = Mathf.Max(0, hitsTaken - 1);
+        Heal(1);
+    }
+
+    // Cura una cantidad de golpes (reduce hitsTaken). amount debe ser >= 1
+    public void Heal(int amount)
+    {
+        if (amount <= 0) return;
+        hitsTaken = Mathf.Max(0, hitsTaken - amount);
         OnHealthChanged?.Invoke(hitsTaken, maxHits);
     }
 
