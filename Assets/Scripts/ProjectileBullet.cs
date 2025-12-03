@@ -14,7 +14,7 @@ public class ProjectileBullet : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.up * (speed * Time.deltaTime));
+        transform.Translate(Vector3.forward * (speed * Time.deltaTime));
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
