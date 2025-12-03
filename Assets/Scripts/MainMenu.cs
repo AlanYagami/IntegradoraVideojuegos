@@ -22,9 +22,7 @@ public class MainMenu : MonoBehaviour
 
     public void OpenInstructionsPanel()
     {
-        mainMenu.SetActive(false);
-        optionsMenu.SetActive(false);
-        instructionsMenu.SetActive(true);
+        SceneManager.LoadScene("InstruccionScene");
     }
 
     public void QuitGame()
