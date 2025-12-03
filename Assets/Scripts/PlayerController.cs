@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     public Transform firePointLeft;   // Punto de disparo izquierdo para disparo doble
     public Transform firePointRight;  // Punto de disparo derecho para disparo doble
+    public Animator animator;         // Referencia al Animator para la animación de carga
+
+    private float chargeTime = 0f;
+    private bool isCharging = false;
+    public float maxChargeTime = 2f;  // Tiempo necesario para cargar el disparo
 
     private float horizontalInput;
     private float verticalInput;
@@ -25,18 +30,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Movimiento original simple (ejes Horizontal / Vertical)
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
+        // Fix: Mover en el plano XZ (Horizontal, 0, Vertical) en lugar de XY
+        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput);
         transform.Translate(movement * (speed * Time.deltaTime));
 
-        // Disparo
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-        {
-            soundController.playDisparo();
-            Shoot();
-        }
+        // Lógica de disparo
+        HandleShooting();
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -45,7 +48,8 @@ public class PlayerController : MonoBehaviour
         if (bulletPrefab && firePoint)
         {
             FireModeManager.FireMode currentMode = fireModeManager.GetCurrentFireMode();
-            
+            Debug.Log($"PlayerController: Shoot() modo actual = {currentMode}");
+
             switch (currentMode)
             {
                 case FireModeManager.FireMode.Normal:
@@ -56,6 +60,9 @@ public class PlayerController : MonoBehaviour
                     break;
                 case FireModeManager.FireMode.ChargedShot:
                     ShootCharged();
+                    break;
+                default:
+                    ShootNormal();
                     break;
             }
         }
@@ -68,6 +75,7 @@ public class PlayerController : MonoBehaviour
     void ShootNormal()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log("PlayerController: Disparo normal instanciado");
         SetBulletDamage(bullet, 1);
     }
 
@@ -77,6 +85,7 @@ public class PlayerController : MonoBehaviour
         if (firePointLeft != null)
         {
             GameObject bulletLeft = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
+            Debug.Log("PlayerController: Disparo doble - izquierda instanciado");
             SetBulletDamage(bulletLeft, 1);
         }
         else
@@ -89,6 +98,7 @@ public class PlayerController : MonoBehaviour
         if (firePointRight != null)
         {
             GameObject bulletRight = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
+            Debug.Log("PlayerController: Disparo doble - derecha instanciado");
             SetBulletDamage(bulletRight, 1);
         }
         else
@@ -101,6 +111,7 @@ public class PlayerController : MonoBehaviour
     void ShootCharged()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log("PlayerController: Disparo cargado instanciado");
         SetBulletDamage(bullet, 2);
     }
 
@@ -119,8 +130,57 @@ public class PlayerController : MonoBehaviour
     {
         if (fireModeManager != null)
         {
+            Debug.Log($"PlayerController: SetFireMode invoked -> {mode} for {duration}s");
+            ResetCharge();
             fireModeManager.SetFireMode(mode, duration);
         }
+    }
+    void HandleShooting()
+    {
+        // Si el modo es disparo cargado, usamos lógica de mantener presionado
+        if (fireModeManager.GetCurrentFireMode() == FireModeManager.FireMode.ChargedShot)
+        {
+            if (Input.GetButton("Fire1") || Input.GetKey(KeyCode.Space))
+            {
+                chargeTime += Time.deltaTime;
+                if (!isCharging)
+                {
+                    isCharging = true;
+                    if (animator != null) animator.SetBool("IsCharging", true);
+                    Debug.Log("Cargando disparo...");
+                }
+            }
+
+            if (Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Space))
+            {
+                if (chargeTime >= maxChargeTime)
+                {
+                    ShootCharged();
+                }
+                else
+                {
+                    // Si suelta antes de cargar completo, dispara normal
+                    ShootNormal();
+                }
+                ResetCharge();
+            }
+        }
+        else
+        {
+            // Comportamiento normal para otros modos
+            if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
+            {
+                soundController.playDisparo();
+                Shoot();
+            }
+        }
+    }
+
+    void ResetCharge()
+    {
+        chargeTime = 0f;
+        isCharging = false;
+        if (animator != null) animator.SetBool("IsCharging", false);
     }
 }
 
