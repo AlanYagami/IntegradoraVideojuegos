@@ -14,6 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SelectCharacter.unity
     guid: a258ff3a23d6440bd8a23f3ce69f993b
+  - enabled: 1
+    path: Assets/Scenes/SelectLevels.unity
+    guid: c68e44f788c7cb146b204213af755fe7
+  - enabled: 1
+    path: Assets/Scenes/Space_One.unity
+    guid: 1e3bda2c47a36874a94a34c39b3b6a20
+  - enabled: 1
+    path: Assets/Scenes/Space_Two.unity
+    guid: f59327309323f1c4481c0891ec09c2f9
+  - enabled: 1
+    path: Assets/Scenes/Space_Three.unity
+    guid: 6a60bc35b431191448389e9aa9b33044
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
