@@ -58,6 +58,13 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
+        //jugador muerto
+        Debug.Log("Jugador destruido");
         Destroy(gameObject);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 }
