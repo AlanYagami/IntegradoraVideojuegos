@@ -61,4 +61,9 @@ public class FireModeManager : MonoBehaviour
     {
         return currentFireMode != FireMode.Normal;
     }
+
+    public float GetTimeRemaining()
+    {
+        return Mathf.Max(0, fireModeDuration - currentFireModeTime);
+    }
 }

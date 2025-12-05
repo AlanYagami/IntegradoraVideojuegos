@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
         {
             fireModeManager = gameObject.AddComponent<FireModeManager>();
         }
+
+
     }
 
     void Update()
