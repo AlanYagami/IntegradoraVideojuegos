@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 27775192}
   - component: {fileID: 27775194}
   - component: {fileID: 27775193}
-  - component: {fileID: 27775195}
   m_Layer: 5
   m_Name: PowerUpTimerText
   m_TagString: Untagged
@@ -256,19 +255,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27775191}
   m_CullTransparentMesh: 1
---- !u!114 &27775195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27775191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a6696e2df1873246a6b0ec4e11ad5f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimplePowerUpUI
-  timerText: {fileID: 27775193}
 --- !u!224 &179695737 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4130105186127108570, guid: ebd3585f2176d324395a813b74a2c84f, type: 3}
@@ -685,6 +671,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1352950453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &588060211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5937932833306469426, guid: 4cb616c59b5cafb4baad4f926050b54d, type: 3}
+  m_PrefabInstance: {fileID: 1465994961078459487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &787635727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7414590370285666921, guid: ebd3585f2176d324395a813b74a2c84f, type: 3}
+  m_PrefabInstance: {fileID: 238043544326545496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &787635731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787635727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6696e2df1873246a6b0ec4e11ad5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimplePowerUpUI
+  timerText: {fileID: 27775193}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +743,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &852233109 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5810837001325884469, guid: 33acba7de0fc1fe42b769d7f7ca16d46, type: 3}
+  m_PrefabInstance: {fileID: 805540362879022000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &938073795 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5588031076296952213, guid: 3ddee3c9915f14b45970420bf1cab973, type: 3}
@@ -942,6 +956,59 @@ MonoBehaviour:
   maxHits: 3
   respawnDelay: 2
   invulnTime: 0.8
+--- !u!1 &1407521854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407521856}
+  - component: {fileID: 1407521855}
+  m_Layer: 0
+  m_Name: PowerUpSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1407521855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407521854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5006e9d4077e30b449970b4a00456ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimplePowerUpSpawner
+  powerUpPrefabs:
+  - {fileID: 1901903335}
+  - {fileID: 1880747324}
+  - {fileID: 588060211}
+  spawnIntervalMin: 10
+  spawnIntervalMax: 20
+  spawnAreaMin: {x: -10, y: 5}
+  spawnAreaMax: {x: 5, y: -5}
+  spawnHeight: 0
+--- !u!4 &1407521856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407521854}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562366687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1393,16 @@ Transform:
   - {fileID: 1750960171}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1880747324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3864406966279104386, guid: b8887b1e100872e49abf3caa717d8821, type: 3}
+  m_PrefabInstance: {fileID: 244305975952236130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1901903335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 26856869010152338, guid: 33acba7de0fc1fe42b769d7f7ca16d46, type: 3}
+  m_PrefabInstance: {fileID: 805540362879022000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958661813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,7 +1549,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4130105186127108570, guid: ebd3585f2176d324395a813b74a2c84f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 27775192}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7414590370285666921, guid: ebd3585f2176d324395a813b74a2c84f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 787635731}
   m_SourcePrefab: {fileID: 100100000, guid: ebd3585f2176d324395a813b74a2c84f, type: 3}
 --- !u!1001 &244305975952236130
 PrefabInstance:
@@ -1789,6 +1869,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 429074100589296934, guid: 3ddee3c9915f14b45970420bf1cab973, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 852233109}
+    - target: {fileID: 429074100589296934, guid: 3ddee3c9915f14b45970420bf1cab973, type: 3}
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 516818127}
@@ -1904,6 +1988,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 7114246185883807529}
+  - {fileID: 1407521856}
   - {fileID: 367490120}
   - {fileID: 1562366691}
   - {fileID: 2249458292098595679}

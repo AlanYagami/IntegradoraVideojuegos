@@ -56,7 +56,29 @@ public class SimplePowerUpSpawner : MonoBehaviour
         );
 
         // Instanciar
+        if (prefab == null)
+        {
+            Debug.LogWarning($"SimplePowerUpSpawner: El prefab en el índice {index} es nulo o fue destruido. Asegúrate de asignar PREFABS desde la carpeta 'Project', no objetos de la 'Hierarchy'.");
+            return;
+        }
+
         currentPowerUp = Instantiate(prefab, pos, Quaternion.identity);
         Debug.Log($"SimplePowerUpSpawner: Spawneado {currentPowerUp.name} en {pos}");
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(0, 1, 0, 0.5f);
+        Vector3 center = new Vector3(
+            (spawnAreaMin.x + spawnAreaMax.x) / 2,
+            spawnHeight,
+            (spawnAreaMin.y + spawnAreaMax.y) / 2
+        );
+        Vector3 size = new Vector3(
+            spawnAreaMax.x - spawnAreaMin.x,
+            1f,
+            spawnAreaMax.y - spawnAreaMin.y
+        );
+        Gizmos.DrawCube(center, size);
     }
 }
