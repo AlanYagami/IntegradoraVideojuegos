@@ -15,6 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectCharacter.unity
     guid: a258ff3a23d6440bd8a23f3ce69f993b
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/SelectLevels.unity
     guid: c68e44f788c7cb146b204213af755fe7
   - enabled: 1
@@ -27,6 +28,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Space_Three.unity
     guid: 6a60bc35b431191448389e9aa9b33044
   - enabled: 1
+=======
+>>>>>>> 81ae72d24c425ca48960dd547c6c6ebc7e191367
     path: Assets/Scenes/InstruccionScene.unity
     guid: 5a0f765613dacfc4fa878a2e19c635ba
   m_configObjects:
