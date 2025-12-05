@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 826159970963861315}
   - component: {fileID: 7648483096788997749}
   - component: {fileID: 2562560225152594060}
+  - component: {fileID: 4662855495350560806}
   m_Layer: 0
   m_Name: SpaceShip
   m_TagString: Player
@@ -38,6 +39,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6364236524963810297}
+  - {fileID: 2584771011617548239}
+  - {fileID: 4763462908749787476}
+  - {fileID: 3753669342591970470}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1054874292482326644
@@ -132,12 +136,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb617985d7ba1244eaaa126b7e4e2c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  soundController: {fileID: 0}
+  soundController: {fileID: 7648483096788997749}
   speed: 5
-  bulletPrefab: {fileID: 4181873268183615082, guid: cc0e4996e2d89e543ba93310084dabef, type: 3}
-  firePoint: {fileID: 0}
-  firePointLeft: {fileID: 0}
-  firePointRight: {fileID: 0}
+  bulletPrefab: {fileID: 2390678494071916647, guid: cc0e4996e2d89e543ba93310084dabef, type: 3}
+  firePoint: {fileID: 2584771011617548239}
+  firePointLeft: {fileID: 4763462908749787476}
+  firePointRight: {fileID: 3753669342591970470}
+  animator: {fileID: 0}
+  maxChargeTime: 2
 --- !u!114 &826159970963861315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,11 +169,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSoundController
   audioSource: {fileID: 2562560225152594060}
-  sonidoDisparo: {fileID: 0}
-  sonidoDisparoCargado: {fileID: 0}
-  sonidoDash: {fileID: 0}
-  sonidoPowerUp: {fileID: 0}
-  sonidoRealentizado: {fileID: 0}
+  sonidoDisparo: {fileID: 8300000, guid: 99597f10a5b7fa146a307ca1955c20eb, type: 3}
+  sonidoDisparoCargado: {fileID: 8300000, guid: fb32c86b50a3f574493fde276014d020, type: 3}
+  sonidoDash: {fileID: 8300000, guid: e7891af6197f25f469bd440abd8937a4, type: 3}
+  sonidoPowerUp: {fileID: 8300000, guid: dcf3ab12a6c261d4aaf2167030f9b679, type: 3}
+  sonidoRealentizado: {fileID: 8300000, guid: db8eedc3735195b4d8759bca17085934, type: 3}
 --- !u!82 &2562560225152594060
 AudioSource:
   m_ObjectHideFlags: 0
@@ -181,7 +187,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.45
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -265,6 +271,113 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4662855495350560806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588031076296952213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9cd1b185852f2469076a317127dbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuickPowerUpTester
+  playerController: {fileID: 429074100589296934}
+  playerHealth: {fileID: 3177616771149678089}
+--- !u!1 &6304356884263824092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3753669342591970470}
+  m_Layer: 0
+  m_Name: FirePoint_Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3753669342591970470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304356884263824092}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3, y: -0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8430989065039559436}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7067464199568214959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4763462908749787476}
+  m_Layer: 0
+  m_Name: FirePoint_Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4763462908749787476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7067464199568214959}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.206, y: -0.06, z: 0.764}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8430989065039559436}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7821471640182007636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2584771011617548239}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2584771011617548239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821471640182007636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.052, z: 0.832}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8430989065039559436}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6906540624526552082
 PrefabInstance:
   m_ObjectHideFlags: 0
