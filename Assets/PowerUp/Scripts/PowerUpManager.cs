@@ -35,6 +35,43 @@ public class PowerUpManager : Singleton<PowerUpManager>
                      ((int)(color.b * 255)).ToString("X2"));
 	}
 
+	private SimplePowerUpUI ui;
+	private FireModeManager fireModeManager;
+
+	void Start()
+	{
+		// Buscar UI y FireModeManager
+		ui = FindObjectOfType<SimplePowerUpUI>();
+		fireModeManager = FindObjectOfType<FireModeManager>();
+	}
+
+	void Update()
+	{
+		if (fireModeManager != null && ui != null)
+		{
+			// Verificar si hay un modo de disparo activo (que no sea Normal)
+			if (fireModeManager.IsActiveFireMode())
+			{
+				// Necesitamos acceder al tiempo restante. 
+				// Como FireModeManager tiene 'fireModeDuration' y 'currentFireModeTime' privados,
+				// asumiremos que podemos modificarlos o que necesitamos hacerlos públicos.
+				// O mejor, usaremos reflexión o añadiremos un getter en FireModeManager si es posible.
+				// Dado que la instrucción es "ajustes mínimos", intentaremos usar lo que hay.
+				// FireModeManager no expone el tiempo restante.
+				// Vamos a modificar FireModeManager para exponerlo.
+				
+				// Por ahora, asumamos que añadiremos GetTimeRemaining() a FireModeManager.
+				float remaining = fireModeManager.GetTimeRemaining();
+				ui.Show();
+				ui.SetText($"Power-Up activo: {remaining:F1}s");
+			}
+			else
+			{
+				ui.Hide();
+			}
+		}
+	}
+
 	void OnGUI() {
 		foreach(CustomizablePowerUp pu in powerUpsLogs) {
 			GUILayout.BeginHorizontal();
