@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3090032709023883282}
@@ -82,7 +82,7 @@ MonoBehaviour:
   moveSpeed: 3
   moveAmplitude: 3
   moveFrequency: 1
-  projectilePrefab: {fileID: 3755386970260673114, guid: ec725b26ef6431a419c7172242878078, type: 3}
+  projectilePrefab: {fileID: 3755386970260673114, guid: 7bf9799362d3f7a46b6e6ea1fd1ac70b, type: 3}
   firePoint: {fileID: 3958250493367507658}
   fireRate: 2
   projectileSpeed: 20
