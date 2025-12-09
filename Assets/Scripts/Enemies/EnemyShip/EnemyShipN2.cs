@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyShipN2 : MonoBehaviour
 {
+    public EnemiesSoundController soundController;
     public float moveSpeed = 5f;
     public float zigzagAmplitude = 3f;
     public float zigzagFrequency = 3f;
@@ -44,13 +45,22 @@ public class EnemyShipN2 : MonoBehaviour
 
         if (Vector3.Distance(transform.position, player.position) > approachDistance)
         {
+            if (soundController != null)
+                soundController.StartAlertaEnemigo();
+
             transform.position += targetDir * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            if (soundController != null)
+                soundController.StopAlertaEnemigo();
         }
 
         transform.position += transform.right * zigzagAmplitude * Mathf.Sin(Time.time * zigzagFrequency) * Time.deltaTime;
 
         transform.LookAt(player);
     }
+
 
     void HandleShooting()
     {

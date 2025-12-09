@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class N1 : MonoBehaviour
+public class EnemyShipN1 : MonoBehaviour
 {
+    public EnemiesSoundController soundController;
+
     public float moveSpeed = 3f;
     public float moveAmplitude = 3f;
     public float moveFrequency = 1f;
@@ -24,13 +26,17 @@ public class N1 : MonoBehaviour
         if (playerObj != null)
         {
             player = playerObj.transform;
-            Debug.Log("[N1] Jugador detectado correctamente.");
+            Debug.Log("[N1] Jugador detectado correctamente");
         }
         else
         {
-            Debug.LogWarning("[N1] No se encontró un objeto con tag 'Player'. La nave no podrá apuntar ni disparar.");
+            Debug.LogWarning("[N1] No se encontró un objeto con tag 'Player'");
         }
-        Debug.Log("[N1] Nave enemiga inicializada.");
+
+        if (soundController == null)
+            Debug.LogWarning("[N1] No hay SoundController asignado.");
+
+        Debug.Log("[N1] Nave enemiga inicializada");
     }
 
     void Update()
@@ -64,6 +70,7 @@ public class N1 : MonoBehaviour
             );
         }
     }
+
     void HandleShooting()
     {
         if (player == null || projectilePrefab == null || firePoint == null)
@@ -84,11 +91,19 @@ public class N1 : MonoBehaviour
             return;
 
         Vector3 direction = (player.position - firePoint.position).normalized;
-
         if (direction == Vector3.zero)
             direction = transform.forward;
 
-        Debug.Log("[N1] Disparando hacia el jugador.");
+        Debug.Log("[N1] Disparando hacia el jugador");
+
+        if (soundController != null)
+        {
+            soundController.playDisparoEnemigo();
+        }
+        else
+        {
+            Debug.LogWarning("[N1] No hay SoundController para reproducir sonido de disparo.");
+        }
 
         GameObject projectile = Instantiate(
             projectilePrefab,
@@ -112,6 +127,16 @@ public class N1 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log($"[EnemyShipN1] Colisión con el jugador. Daño: {damage}");
+
+            if (soundController != null)
+            {
+                soundController.playGolpeEnemigo();
+            }
+            else
+            {
+                Debug.LogWarning("[N1] No hay SoundController para reproducir sonido de golpe.");
+            }
+
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
@@ -122,7 +147,7 @@ public class N1 : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Debug.Log("[N1] Nave salió de la cámara y será destruida.");
+        Debug.Log("[N1] Nave salió de la cámara");
         Destroy(gameObject);
     }
 }
