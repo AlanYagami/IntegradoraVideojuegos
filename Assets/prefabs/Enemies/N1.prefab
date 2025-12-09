@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 4248129229160990157}
   - component: {fileID: 1184887352659432189}
   - component: {fileID: 1484442701705193947}
+  - component: {fileID: -1121020116477894165}
+  - component: {fileID: -6627103758388675566}
   m_Layer: 0
   m_Name: N1
   m_TagString: Untagged
@@ -60,7 +62,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3090032709023883282}
@@ -79,10 +81,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4c636759dcab440a02a6558de9ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShipN1
+  soundController: {fileID: -6627103758388675566}
   moveSpeed: 3
   moveAmplitude: 3
   moveFrequency: 1
-  projectilePrefab: {fileID: 3755386970260673114, guid: ec725b26ef6431a419c7172242878078, type: 3}
+  projectilePrefab: {fileID: 3755386970260673114, guid: 7bf9799362d3f7a46b6e6ea1fd1ac70b, type: 3}
   firePoint: {fileID: 3958250493367507658}
   fireRate: 2
   projectileSpeed: 20
@@ -136,6 +139,120 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!82 &-1121020116477894165
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8632438145149511586}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &-6627103758388675566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8632438145149511586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e285c5ac046164aa79cc8879cbebae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemiesSoundController
+  audioSource: {fileID: -1121020116477894165}
+  sonidoDisparoEnemigo: {fileID: 8300000, guid: c87203810df3a254d97c4e76d5436691, type: 3}
+  sonidoMuerteEnemigo: {fileID: 8300000, guid: ff71d086458505540a7229b9264e6d2b, type: 3}
+  sonidoAlertaEnemigo: {fileID: 8300000, guid: a3a4589bef807394a950ba98d1ee925a, type: 3}
+  sonidoGolpeEnemigo: {fileID: 8300000, guid: f6759b5a3a3c3e04698e9370fa9909bc, type: 3}
 --- !u!1001 &3272068667567343609
 PrefabInstance:
   m_ObjectHideFlags: 0

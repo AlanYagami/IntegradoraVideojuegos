@@ -7,16 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
-    public GameObject backgroundPanel;
-
-    // Game Over UI
+    public Canvas uiCanvas;
     public TextMeshProUGUI gameOverText;
     public Button menuButton;
-    private bool gameOverActivo = false;
-
-    // Pausa UI
     public TextMeshProUGUI gamePausaText;
+
+    private bool gameOverActivo = false;
     private bool juegoPausado = false;
 
     public List<Personajes> personajes;
@@ -36,8 +32,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if (backgroundPanel != null)
-            backgroundPanel.SetActive(false);
+        if (uiCanvas != null)
+            uiCanvas.gameObject.SetActive(false);
 
         if (menuButton != null)
             menuButton.onClick.AddListener(IrAlMenu);
@@ -69,15 +65,15 @@ public class GameManager : MonoBehaviour
 
         gameOverActivo = true;
 
-        if (backgroundPanel != null)
-            backgroundPanel.SetActive(true);
+        if (uiCanvas != null)
+            uiCanvas.gameObject.SetActive(true);
 
         if (gameOverText != null)
         {
             gameOverText.text = "GAME OVER\n(ESC o M para menú)";
         }
 
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
     }
 
     // ================== PAUSA ==================
@@ -95,9 +91,9 @@ public class GameManager : MonoBehaviour
         juegoPausado = true;
         Time.timeScale = 0f;
 
-        if (backgroundPanel != null)
-            backgroundPanel.SetActive(true);
-        
+        if (uiCanvas != null)
+            uiCanvas.gameObject.SetActive(true);
+
         if (gamePausaText != null)
         {
             gamePausaText.text = "PAUSA";
@@ -109,9 +105,9 @@ public class GameManager : MonoBehaviour
         juegoPausado = false;
         Time.timeScale = 1f;
 
-        if (backgroundPanel != null)
-            backgroundPanel.SetActive(false);
-        
+        if (uiCanvas != null)
+            uiCanvas.gameObject.SetActive(false);
+
         if (gamePausaText != null)
         {
             gamePausaText.text = "";

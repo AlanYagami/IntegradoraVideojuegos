@@ -40,5 +40,7 @@ public class ShipSelector : MonoBehaviour
         {
             ships[i].SetActive(i == index);
         }
+        PlayerPrefs.SetInt("NaveID", index);
+        PlayerPrefs.Save();
     }
 }
