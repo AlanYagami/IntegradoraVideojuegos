@@ -1,124 +1,153 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Canvas uiCanvas;
-    public TextMeshProUGUI gameOverText;
-    public Button menuButton;
-    public TextMeshProUGUI gamePausaText;
 
-    private bool gameOverActivo = false;
-    private bool juegoPausado = false;
-
-    public List<Personajes> personajes;
+    [Header("Configuration")]
+    public string menuSceneName = "MainMenu";
+    public string optionsSceneName = "OptionsScene";
+    public List<string> levelNames = new List<string> { "Space_One", "Space_Two", "Space_Three" };
 
     private void Awake()
     {
-        if (GameManager.Instance == null)
+        if (Instance == null)
         {
-            GameManager.Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
-    void Start()
+    private void OnDestroy()
     {
-        if (uiCanvas != null)
-            uiCanvas.gameObject.SetActive(false);
-
-        if (menuButton != null)
-            menuButton.onClick.AddListener(IrAlMenu);
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
     }
 
-    void Update()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // ----- PAUSA -----
-        if (!gameOverActivo && Input.GetKeyDown(KeyCode.Escape))
+        // 1. Check if the loaded scene is a GAMEPLAY LEVEL
+        if (levelNames.Contains(scene.name))
         {
-            TogglePausa();
-        }
-
-        // ----- GAME OVER -----
-        if (gameOverActivo)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.M))
+            // 2. Load OptionsScene ADDITIVELY if not already present
+            if (!IsSceneLoaded(optionsSceneName))
             {
-                IrAlMenu();
+                Debug.Log($"[GameManager] Loading UI ({optionsSceneName}) for level: {scene.name}");
+                SceneManager.LoadSceneAsync(optionsSceneName, LoadSceneMode.Additive);
             }
+            
+            // Ensure time is running
+            Time.timeScale = 1f;
+        }
+        else if (scene.name == optionsSceneName)
+        {
+            // OptionsScene just loaded. Do nothing special. 
+            // UICore inside it will initialize itself.
+        }
+        else
+        {
+            // We are in a menu (MainMenu, SelectCharacter, etc).
+            // Ensure NO OptionsScene is present (cleanup if necessary)
+            // Note: Normal usage of LoadScene(Single) automatically unloads other scenes, 
+            // so OptionsScene should disappear naturally.
+            Time.timeScale = 1f;
         }
     }
 
-    // ================== GAME OVER ==================
+    private bool IsSceneLoaded(string sceneName)
+    {
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            Scene s = SceneManager.GetSceneAt(i);
+            if (s.name == sceneName) return true;
+        }
+        return false;
+    }
+
+    // ================= NAVIGATION METHODS =================
+
+    public void LoadScene(string sceneName)
+    {
+        Debug.Log($"[GameManager] Loading Scene: {sceneName}");
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadLevel(string levelName)
+    {
+        if (levelNames.Contains(levelName))
+        {
+            Debug.Log($"[GameManager] Starting Level: {levelName}");
+            SceneManager.LoadScene(levelName); 
+            // OnSceneLoaded will handle the UI
+        }
+        else
+        {
+            Debug.LogError($"[GameManager] Level {levelName} is not in the allowed level list!");
+        }
+    }
+
+    public void RestartLevel()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        LoadLevel(currentScene);
+    }
+
+    public void LoadNextLevel()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        int index = levelNames.IndexOf(currentScene);
+        
+        if (index != -1 && index < levelNames.Count - 1)
+        {
+            LoadLevel(levelNames[index + 1]);
+        }
+        else
+        {
+            Debug.Log("[GameManager] No more levels. Returning to menu.");
+            ReturnToMenu();
+        }
+    }
+
+    public void ReturnToMenu()
+    {
+        LoadScene(menuSceneName);
+    }
+
+    // ================= GAME LOGIC PROXIES =================
+    // Called by PlayerHealth, etc.
 
     public void GameOver()
     {
-        if (gameOverActivo) return;
-
-        gameOverActivo = true;
-
-        if (uiCanvas != null)
-            uiCanvas.gameObject.SetActive(true);
-
-        if (gameOverText != null)
-        {
-            gameOverText.text = "GAME OVER\n(ESC o M para menú)";
-        }
-
+        Debug.Log("Game Over!");
         Time.timeScale = 0f;
+        if (UICore.Instance != null) UICore.Instance.ShowGameOverPanel();
     }
 
-    // ================== PAUSA ==================
-
-    public void TogglePausa()
+    public void Victory()
     {
-        if (juegoPausado)
-            Reanudar();
-        else
-            Pausar();
+        Debug.Log("Victory!");
+        Time.timeScale = 0f; // Pause game
+        if (UICore.Instance != null) UICore.Instance.ShowVictoryPanel();
     }
 
-    public void Pausar()
+    public void PauseGame()
     {
-        juegoPausado = true;
         Time.timeScale = 0f;
-
-        if (uiCanvas != null)
-            uiCanvas.gameObject.SetActive(true);
-
-        if (gamePausaText != null)
-        {
-            gamePausaText.text = "PAUSA";
-        }
+        if (UICore.Instance != null) UICore.Instance.ShowPausePanel();
     }
 
-    public void Reanudar()
-    {
-        juegoPausado = false;
-        Time.timeScale = 1f;
-
-        if (uiCanvas != null)
-            uiCanvas.gameObject.SetActive(false);
-
-        if (gamePausaText != null)
-        {
-            gamePausaText.text = "";
-        }
-    }
-
-    // ================== ESCENAS ==================
-
-    public void IrAlMenu()
+    public void ResumeGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        if (UICore.Instance != null) UICore.Instance.HideAllPanels();
     }
 }

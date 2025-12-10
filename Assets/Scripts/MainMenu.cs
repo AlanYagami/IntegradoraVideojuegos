@@ -1,38 +1,49 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject optionsMenu;
-    public GameObject mainMenu;
-    public GameObject instructionsMenu;
+    [Header("Panels Optional")]
+    public GameObject optionsPanel; // Si tienes un panel de opciones en el menú principal
+    public GameObject mainPanel;
 
-    public void OpenOptionsPanel()
+    private void Start()
     {
-        mainMenu.SetActive(false);
-        optionsMenu.SetActive(true);
-        instructionsMenu.SetActive(false);
-    }
-    public void OpenMainMenuPanel()
-    {
-        mainMenu.SetActive(true);
-        optionsMenu.SetActive(false);
-        instructionsMenu.SetActive(false);
+        // Asegurar estado inicial limpio
+        if (mainPanel) mainPanel.SetActive(true);
+        if (optionsPanel) optionsPanel.SetActive(false);
     }
 
-    public void OpenInstructionsPanel()
+    // Botón JUGAR
+    public void PlayGame()
     {
-        SceneManager.LoadScene("InstruccionScene");
+        // El flujo pide ir a SelectCharacter primero
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.LoadScene("SelectCharacter");
+        }
+        else
+        {
+            Debug.LogError("FATAL: No existe GameManager en la escena. Asegúrate de iniciar desde una escena con GameManager o que tenga el prefab.");
+        }
     }
 
+    // Botón SALIR
     public void QuitGame()
     {
+        Debug.Log("Saliendo del juego...");
         Application.Quit();
-        Debug.Log("Quit Game");
     }
 
-    public void SelectShip()
+    // Métodos para paneles locales del menú (Credits, Options del menú principal)
+    public void ShowOptions()
     {
-        SceneManager.LoadScene("SelectCharacter");
+        if (mainPanel) mainPanel.SetActive(false);
+        if (optionsPanel) optionsPanel.SetActive(true);
+    }
+
+    public void ShowMain()
+    {
+        if (mainPanel) mainPanel.SetActive(true);
+        if (optionsPanel) optionsPanel.SetActive(false);
     }
 }

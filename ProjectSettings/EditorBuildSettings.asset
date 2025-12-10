@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Space_Three.unity
     guid: 6a60bc35b431191448389e9aa9b33044
+  - enabled: 1
+    path: Assets/Scenes/OptionsScene.unity
+    guid: 207541c352216b84493cfead947d19c0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
