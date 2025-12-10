@@ -16,17 +16,7 @@ public class UICore : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            // We do NOT want DontDestroyOnLoad if we are loading this additively strictly for the level.
-            // HOWEVER, the user asked for "Exista únicamente en escenas de nivel" and "Se destruya automáticamente si aparece por error...".
-            // Typically, if loaded additively, it lives as long as the scene. 
-            // If the user wants it to persist across levels, we'd use DontDestroyOnLoad.
-            // But if it is inside "OptionsScene" which is loaded additively, it will be destroyed when OptionsScene is unloaded or when the main scene changes single-mode.
-            // Let's assume OptionsScene is loaded additively and we want it to handle itself.
-            // If the user said "UI se queda persistente", we want to avoid DontDestroyOnLoad unless carefully managed.
-            // Given the requirement "NO debe existir NINGÚN addititve load fuera de los niveles", 
-            // let's play it safe: DO NOT use DontDestroyOnLoad if it belongs to the additive scene.
-            // The additive scene will be unloaded when the main scene changes.
-        }
+            }
         else
         {
             Destroy(gameObject);

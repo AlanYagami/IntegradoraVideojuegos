@@ -2,30 +2,89 @@ using UnityEngine;
 
 public class SelectCharacter : MonoBehaviour
 {
-    // Método para el botón del personaje 1
-    public void SelectChar1()
+    [Header("Model Selection")]
+    public GameObject[] shipModels; 
+    private int currentShipIndex = 0;
+
+    private void Start()
     {
-        // Aquí podrías guardar la selección en GameManager si tienes esa lógica
-        // Ejemplo: GameManager.Instance.SetCharacter(0);
+        currentShipIndex = PlayerPrefs.GetInt("NaveID", 0);
+        UpdateShipVisuals();
+    }
+
+
+    public void NextShip()
+    {
+        currentShipIndex++;
+        if (currentShipIndex >= shipModels.Length)
+        {
+            currentShipIndex = 0;
+        }
+        UpdateShipVisuals();
+    }
+
+    public void PreviousShip()
+    {
+        currentShipIndex--;
+        if (currentShipIndex < 0)
+        {
+            currentShipIndex = shipModels.Length - 1;
+        }
+        UpdateShipVisuals();
+    }
+
+    private void UpdateShipVisuals()
+    {
+        for (int i = 0; i < shipModels.Length; i++)
+        {
+            if (shipModels[i] != null)
+            {
+                shipModels[i].SetActive(i == currentShipIndex);
+            }
+        }
         
-        GoToLevelSelection();
+        PlayerPrefs.SetInt("NaveID", currentShipIndex);
+        PlayerPrefs.Save();
     }
 
-    // Método para el botón del personaje 2
-    public void SelectChar2()
-    {
-        // GameManager.Instance.SetCharacter(1);
-        GoToLevelSelection();
-    }
 
-    private void GoToLevelSelection()
+    public void ConfirmSelection()
     {
-        // Usamos GameManager para cambiar de escena de forma segura
         GameManager.Instance.LoadScene("SelectLevels");
     }
-    
-    public void BackToMenu()
+
+    public void SelectChar1()
     {
-        GameManager.Instance.ReturnToMenu();
+        currentShipIndex = 0;
+        UpdateShipVisuals();
     }
+
+    public void SelectChar2()
+    {
+        currentShipIndex = 1;
+        UpdateShipVisuals();
+    }
+
+    public void SelectChar3()
+    {
+        currentShipIndex = 3;
+        UpdateShipVisuals();
+    }
+
+    public void SelectChar4()
+    {
+        currentShipIndex = 4;
+        UpdateShipVisuals();
+    }
+
+    public void SelectChar5()
+    {
+        currentShipIndex = 5;
+        UpdateShipVisuals();
+    }
+    
+    // public void BackToMenu()
+    // {
+    //     GameManager.Instance.ReturnToMenu();
+    // }
 }
