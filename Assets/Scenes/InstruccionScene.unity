@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 459283240}
   m_Direction: 3
   m_Value: 0
-  m_Size: 0.999998
+  m_Size: 0.99974376
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2615,9 +2615,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1952136181}
+      - m_Target: {fileID: 1952136186}
         m_TargetAssemblyTypeName: ReturnToMainMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2674,10 +2674,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1952136181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebda0cda571934d88b10507dfb3dd1e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f348861314d44a449369172a5def0d0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  mainPanel: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::ReturnToMainMenu
 --- !u!1 &1985601325
 GameObject:
   m_ObjectHideFlags: 0

@@ -145,6 +145,36 @@ public class GameManager : MonoBehaviour
         if (UICore.Instance != null) UICore.Instance.ShowPausePanel();
     }
 
+    // ================= INPUT HANDLING =================
+    
+    private void Update()
+    {
+        // Only process inputs if we are in a gameplay level
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (!levelNames.Contains(currentScene)) return;
+
+        // PAUSE: ESC or P
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale > 0)
+                PauseGame();
+            else
+                ResumeGame();
+        }
+
+        // DEBUG: V for Victory
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Victory();
+        }
+
+        // DEBUG: G for Game Over
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GameOver();
+        }
+    }
+
     public void ResumeGame()
     {
         Time.timeScale = 1f;
