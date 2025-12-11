@@ -172,7 +172,11 @@ public class PlayerController : MonoBehaviour
             // Comportamiento normal para otros modos
             if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
             {
-                soundController.playDisparo();
+                if (soundController != null) 
+                    soundController.playDisparo();
+                else
+                    Debug.LogWarning("PlayerController: soundController no asignado.");
+                
                 Shoot();
             }
         }

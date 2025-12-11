@@ -17,6 +17,12 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        // Notificar al GameManager para sumar puntos (ej. 10 puntos por enemigo común)
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddScore(10);
+        }
+
         // Aquí podrías poner animación o efecto de explosión
         Destroy(gameObject);
     }
