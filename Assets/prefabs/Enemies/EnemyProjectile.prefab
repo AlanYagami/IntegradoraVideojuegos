@@ -56,7 +56,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -149,6 +149,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c7352b06adc33b947b81c38e6e99f1a9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3287134596267476184}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c7352b06adc33b947b81c38e6e99f1a9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7907300587575603890}
   m_SourcePrefab: {fileID: 100100000, guid: c7352b06adc33b947b81c38e6e99f1a9, type: 3}
 --- !u!1 &5013608675895342448 stripped
 GameObject:
@@ -218,6 +221,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectile
   damage: 10
   lifeTime: 5
+--- !u!135 &7907300587575603890
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5013608675895342448}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.03
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &5681354888756244426 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c7352b06adc33b947b81c38e6e99f1a9, type: 3}
