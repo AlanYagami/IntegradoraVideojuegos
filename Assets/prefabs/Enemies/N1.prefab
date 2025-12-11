@@ -45,9 +45,10 @@ GameObject:
   - component: {fileID: 1484442701705193947}
   - component: {fileID: -1121020116477894165}
   - component: {fileID: -6627103758388675566}
+  - component: {fileID: 2996869507672208824}
   m_Layer: 0
   m_Name: N1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,6 +254,27 @@ MonoBehaviour:
   sonidoMuerteEnemigo: {fileID: 8300000, guid: ff71d086458505540a7229b9264e6d2b, type: 3}
   sonidoAlertaEnemigo: {fileID: 8300000, guid: a3a4589bef807394a950ba98d1ee925a, type: 3}
   sonidoGolpeEnemigo: {fileID: 8300000, guid: f6759b5a3a3c3e04698e9370fa9909bc, type: 3}
+--- !u!135 &2996869507672208824
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8632438145149511586}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.18
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3272068667567343609
 PrefabInstance:
   m_ObjectHideFlags: 0
