@@ -1,20 +1,20 @@
-using UnityEngine;
+// using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewPersonaje", menuName = "Personaje")]
-public class Personajes : ScriptableObject
-{
-    public GameObject personajeJugable;
-    public Sprite imagen;
-    public string nombre;
+// [CreateAssetMenu(fileName = "NewPersonaje", menuName = "Personaje")]
+// public class Personajes : ScriptableObject
+// {
+//     public GameObject personajeJugable;
+//     public Sprite imagen;
+//     public string nombre;
     
-    void Start()
-    {
+//     void Start()
+//     {
         
-    }
+//     }
 
-    // Update is called once per frame
-    void Update()
-    {
+//     // Update is called once per frame
+//     void Update()
+//     {
         
-    }
-}
+//     }
+// }

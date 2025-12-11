@@ -1,24 +1,25 @@
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SelectLevel : MonoBehaviour
 {
-
-    public GameObject level1;
-    public GameObject level2;
-    public GameObject level3;
-
     public void SelectLevel1()
     {
-        SceneManager.LoadScene("Space_One");
+        // IMPORTANTE: Esto cargará el nivel Y la UI de forma aditiva
+        GameManager.Instance.LoadLevel("Space_One");
     }
+
     public void SelectLevel2()
     {
-        SceneManager.LoadScene("Space_Two");
+        GameManager.Instance.LoadLevel("Space_Two");
     }
+
     public void SelectLevel3()
     {
-        SceneManager.LoadScene("Space_Three");
+        GameManager.Instance.LoadLevel("Space_Three");
+    }
+
+    public void BackToCharacterSelection()
+    {
+        GameManager.Instance.LoadScene("SelectCharacter");
     }
 }

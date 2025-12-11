@@ -1,38 +1,53 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject optionsMenu;
-    public GameObject mainMenu;
-    public GameObject instructionsMenu;
+    [Header("Panels Optional")]
+    public GameObject mainPanel;
 
-    public void OpenOptionsPanel()
+    private void Start()
     {
-        mainMenu.SetActive(false);
-        optionsMenu.SetActive(true);
-        instructionsMenu.SetActive(false);
-    }
-    public void OpenMainMenuPanel()
-    {
-        mainMenu.SetActive(true);
-        optionsMenu.SetActive(false);
-        instructionsMenu.SetActive(false);
+        // Asegurar estado inicial limpio
+        if (mainPanel) mainPanel.SetActive(true);
     }
 
-    public void OpenInstructionsPanel()
+    // Botón JUGAR
+    public void PlayGame()
     {
-        SceneManager.LoadScene("InstruccionScene");
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.LoadScene("SelectCharacter");
+        }
+        else
+        {
+            Debug.LogError("FATAL: No existe GameManager en la escena. Asegúrate de iniciar desde una escena con GameManager o que tenga el prefab.");
+        }
     }
 
+    // Botón Instrucciones
+    public void Instructions()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.LoadScene("InstruccionScene");
+        }
+        else
+        {
+            Debug.LogError("FATAL: No existe GameManager en la escena. Asegúrate de iniciar desde una escena con GameManager o que tenga el prefab.");
+        }
+    }
+
+    // Botón SALIR
     public void QuitGame()
     {
+        Debug.Log("Saliendo del juego...");
         Application.Quit();
-        Debug.Log("Quit Game");
     }
 
-    public void SelectShip()
+    
+
+    public void ShowMain()
     {
-        SceneManager.LoadScene("SelectCharacter");
+        if (mainPanel) mainPanel.SetActive(true);
     }
 }
