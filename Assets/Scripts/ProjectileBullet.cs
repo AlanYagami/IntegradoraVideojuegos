@@ -24,15 +24,44 @@ public class ProjectileBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerProjectile") || other.CompareTag("EnemyProjectile"))
+        // Fix: Usamos comparison directa (other.tag == "...") en lugar de CompareTag
+        // porque CompareTag lanza erro si el Tag no está definido en los Project Settings.
+        if (other.tag == "PlayerProjectile" || other.tag == "EnemyProjectile")
             return;
 
+        // Intentar dañar Enemy
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
+        // Intentar dañar MeteoriteM1
+        MeteoriteM1 meteor = other.GetComponent<MeteoriteM1>();
+        if (meteor != null)
+        {
+            meteor.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
+        // Intentar dañar AsteroidMovement
+        AsteroidMovement asteroid = other.GetComponent<AsteroidMovement>();
+        if (asteroid != null)
+        {
+            asteroid.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
+        // Si es "Enemy" tag pero no tiene script, lo destruimos por seguridad (Legacy behavior)
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log($"[PlayerBullet] Destruyó al enemigo: {other.name}");
-
-            Destroy(other.gameObject); 
-            Destroy(gameObject);
+             Debug.LogWarning($"[PlayerBullet] Objeto {other.name} tiene tag Enemy pero no script conocido. Destruyendo igual.");
+             Destroy(other.gameObject);
+             Destroy(gameObject);
         }
     }
 

@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     public string optionsSceneName = "OptionsScene";
     public List<string> levelNames = new List<string> { "Space_One", "Space_Two", "Space_Three" };
 
+    [Header("Score System")]
+    public int score = 0;
+    public int targetScore = 100;
+
     private void Awake()
     {
         if (Instance == null)
@@ -71,6 +75,19 @@ public class GameManager : MonoBehaviour
             if (s.name == sceneName) return true;
         }
         return false;
+    }
+
+    // ================= SCORE METHODS =================
+
+    public void AddScore(int amount)
+    {
+        score += amount;
+        Debug.Log($"[GameManager] Score: {score}/{targetScore}");
+
+        if (score >= targetScore)
+        {
+            Victory();
+        }
     }
 
     // ================= NAVIGATION METHODS =================

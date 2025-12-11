@@ -49,6 +49,18 @@ public class MeteoriteM1 : MonoBehaviour
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.Self);
     }
 
+    public void TakeDamage(int amount)
+    {
+        // Los meteoritos dan 5 puntos
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddScore(5);
+        }
+        
+        Debug.Log($"[M1] Meteorito destruido. Score actual: {GameManager.Instance.score}");
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
