@@ -68,14 +68,23 @@ public class UICore : MonoBehaviour
     public void ReturnToMenu()
     {
         // Proxy to GameManager
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.ReturnToMenu();
-        }
-        else
-        {
-            // Fallback
-            SceneManager.LoadScene("MainMenu");
-        }
+        if (GameManager.Instance != null) GameManager.Instance.ReturnToMenu();
+        else SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartLevel()
+    {
+        if (GameManager.Instance != null) GameManager.Instance.RestartLevel();
+    }
+
+    public void NextLevel()
+    {
+        if (GameManager.Instance != null) GameManager.Instance.LoadNextLevel();
+    }
+
+    public void ResumeGame()
+    {
+        if (GameManager.Instance != null) GameManager.Instance.ResumeGame();
+        HideAllPanels(); // Ensure panels close visually immediately
     }
 }
